@@ -1,5 +1,7 @@
 import React from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
+
 import './index.scss';
 
 const Layout = (props) => {
@@ -12,7 +14,7 @@ const Layout = (props) => {
         footer
      } = props;
     const aside = visibilityAside ? props.aside : null;
-    
+
     return (
         <div className="layout">
             {header ?
@@ -43,6 +45,13 @@ const Layout = (props) => {
         </div>
     )
 }
+
+Layout.propTypes = {
+    aside: PropTypes.node,
+    children: PropTypes.node.isRequired,
+    footer: PropTypes.node,
+    header: PropTypes.node
+};
 
 const mapStateToProps = state => ({
     layout: state.layout
