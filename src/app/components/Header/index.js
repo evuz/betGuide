@@ -19,7 +19,12 @@ class Header extends Component {
     render() {
         return (
             <div className="header-component">
-                <MdMenu className="icon" onClick={this.toogleAsideMenu} />
+                <div className="left">
+                    <MdMenu className="icon" onClick={this.toogleAsideMenu} />
+                </div>
+                <div className="right">
+                    <a href="#" className="btn">Sign In</a>
+                </div>
             </div>
         );
     }
