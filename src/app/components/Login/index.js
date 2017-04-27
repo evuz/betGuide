@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Input from './Input';
+import Spinner from './Spinner';
 
 import { toogleDisplayRegister, signUp, signIn } from '../../reducers/login';
 
@@ -35,11 +36,12 @@ class Login extends Component {
     }
 
     render() {
-        const { isDisplayRegister, userData, userErrors } = this.props.login;
+        const { isDisplayRegister, userData, userErrors, fetching } = this.props.login;
         const textPlaceholder = isDisplayRegister ? 'Username' : 'Username or e-mail';
         return (
             <div className="login-component">
                 <form>
+                    {fetching ? <div className="overlay-loading"><Spinner/></div> : null}
                     {isDisplayRegister ? <Input type="email" placeholder="E-mail"
                         value={userData.email} name="email" error={userErrors.email} /> : null}
                     <Input type="text" placeholder={textPlaceholder}

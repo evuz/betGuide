@@ -1,4 +1,10 @@
-import { TOOGLE_DISPLAY_REGISTER, SAVE_DATA_USER, SAVE_ERROR_USER, CLEAR_ERRORS } from './actionTypes';
+import {
+    TOOGLE_DISPLAY_REGISTER,
+    SAVE_DATA_USER,
+    SAVE_ERROR_USER,
+    CLEAR_ERRORS,
+    SET_LOGIN_FETCHING
+} from './actionTypes';
 
 export function toogleDisplayRegister() {
     return {
@@ -73,6 +79,10 @@ function signUser(userData, postFn) {
                 type: CLEAR_ERRORS
             });
             postFn();
+            dispatch({
+                type: SET_LOGIN_FETCHING,
+                isFetching: true
+            })
         }
     }
 }

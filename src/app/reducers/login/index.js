@@ -1,6 +1,12 @@
 import { combineReducers } from 'redux';
 
-import { TOOGLE_DISPLAY_REGISTER, SAVE_DATA_USER, SAVE_ERROR_USER, CLEAR_ERRORS } from './actionTypes';
+import {
+    TOOGLE_DISPLAY_REGISTER,
+    SAVE_DATA_USER,
+    SAVE_ERROR_USER,
+    CLEAR_ERRORS,
+    SET_LOGIN_FETCHING
+} from './actionTypes';
 export * from './actions';
 
 const initializeUserData = {
@@ -41,8 +47,19 @@ function userErrors(state = {}, action) {
     }
 }
 
+function fetching(state = false, action) {
+    switch (action.type) {
+        case SET_LOGIN_FETCHING:
+            const { isFetching } = action;
+            return isFetching
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     isDisplayRegister,
     userData,
-    userErrors
+    userErrors,
+    fetching
 })
