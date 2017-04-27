@@ -1,5 +1,14 @@
-.header {
-    height: 80px;
+.header-component {
     background-color: black;
     color: white;
+    display: flex;
+    height: 60px;
+    padding: 10px;
+    .icon {
+        height: 40px;
+        width: 40px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }

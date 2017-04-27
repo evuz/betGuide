@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toogleVisibilityAside } from '../../reducers/layout';
+import { MdMenu } from 'react-icons/lib/md'
 
 import './index.scss';
 
@@ -17,8 +18,8 @@ class Header extends Component {
 
     render() {
         return (
-            <div className="header">
-                <a href="#" onClick={this.toogleAsideMenu}>Menú</a>
+            <div className="header-component">
+                <MdMenu className="icon" onClick={this.toogleAsideMenu} />
             </div>
         );
     }
