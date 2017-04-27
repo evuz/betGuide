@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import Input from './Input';
 import Spinner from './Spinner';
@@ -66,6 +67,13 @@ const mapDispatchToProps = {
     toogleDisplayRegister,
     signIn,
     signUp
+}
+
+Login.propTypes = {
+    toogleDisplayRegister: PropTypes.func.isRequired,
+    signIn: PropTypes.func.isRequired,
+    signUp: PropTypes.func.isRequired,
+    login: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

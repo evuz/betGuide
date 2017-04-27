@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import { saveDataUser } from '../../../reducers/login';
@@ -32,6 +33,10 @@ class Input extends Component {
 
 const mapDispatchToProps = {
     saveDataUser
+}
+
+Input.propTypes = {
+    saveDataUser: PropTypes.func.isRequired
 }
 
 export default connect(null, mapDispatchToProps)(Input);
