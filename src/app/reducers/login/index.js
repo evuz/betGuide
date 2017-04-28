@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import {
     TOOGLE_DISPLAY_REGISTER,
     SAVE_DATA_USER,
+    CLEAR_DATA_USER,
     SAVE_ERROR_USER,
     CLEAR_ERRORS,
     SET_LOGIN_FETCHING
@@ -30,6 +31,8 @@ function userData(state = initializeUserData, action) {
         case SAVE_DATA_USER:
             const { userData } = action;
             return Object.assign({}, state, userData)
+        case CLEAR_DATA_USER:
+            return initializeUserData;
         default:
             return state;
     }
