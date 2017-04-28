@@ -1,6 +1,7 @@
 import {
     TOOGLE_DISPLAY_REGISTER,
     SAVE_DATA_USER,
+    CLEAR_DATA_USER,
     SAVE_ERROR_USER,
     CLEAR_ERRORS,
     SET_LOGIN_FETCHING
@@ -30,28 +31,50 @@ export function signIn(userData) {
         body = Object.assign({}, body, { displayName: username })
     }
     console.log(body);
-    return signUser(userData, () => {
+    return signUser(userData, (dispatch) => {
         fetch('http://localhost:3001/api/signin', {
             method: 'POST',
-            body: body
-        }).then(res => {
-            console.log(res);
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(body)
         })
+            .then(res => res.json())
+            .then(res => {
+                dispatch({
+                    type: SET_LOGIN_FETCHING,
+                    isFetching: false
+                })
+                dispatch({
+                    type: CLEAR_DATA_USER
+                })
+            })
     })
 }
 
 export function signUp(userData) {
-    return signUser(userData, () => {
+    return signUser(userData, (dispatch) => {
         fetch('http://localhost:3001/api/signup', {
             method: 'POST',
-            body: {
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
                 displayName: userData.username,
                 email: userData.email,
                 password: userData.password
-            }
-        }).then(res => {
-            console.log(res);
+            })
         })
+            .then(res => res.json())
+            .then(res => {
+                dispatch({
+                    type: SET_LOGIN_FETCHING,
+                    isFetching: false
+                })
+                dispatch({
+                    type: CLEAR_DATA_USER
+                })
+            })
     })
 }
 
@@ -78,7 +101,7 @@ function signUser(userData, postFn) {
             dispatch({
                 type: CLEAR_ERRORS
             });
-            postFn();
+            postFn(dispatch);
             dispatch({
                 type: SET_LOGIN_FETCHING,
                 isFetching: true
