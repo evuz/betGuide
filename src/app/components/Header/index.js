@@ -17,16 +17,25 @@ class Header extends Component {
     }
 
     render() {
+        const { user } = this.props;
+        console.log(this.props);
         return (
             <div className="header-component">
                 <div className="left">
                     <MdMenu className="icon" onClick={this.toogleAsideMenu} />
                 </div>
                 <div className="right">
-                    <a href="#" className="btn">Sign In</a>
+                    {user.email ? user.displayName : <a href="#" className="btn">Sign In</a> }
                 </div>
             </div>
         );
+    }
+}
+
+const mapStateToProps = state => {
+    const { user } = state.login;
+    return {
+        user
     }
 }
 
@@ -34,4 +43,4 @@ const mapDispatchToProps = {
     toogleVisibilityAside
 }
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
