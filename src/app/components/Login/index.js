@@ -14,6 +14,7 @@ class Login extends Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDisplay = this.handleDisplay.bind(this);
+        this.handleKeyUp = this.handleKeyUp.bind(this);
     }
 
     handleSubmit(e) {
@@ -36,12 +37,18 @@ class Login extends Component {
         this.props.toogleDisplayRegister();
     }
 
+    handleKeyUp (e) {
+        if (e.key === 'Enter') {
+            this.handleSubmit(e);
+        }
+    }
+
     render() {
         const { isDisplayRegister, userData, userErrors, fetching } = this.props.login;
         const textPlaceholder = isDisplayRegister ? 'Username' : 'Username or e-mail';
         return (
             <div className="login-component">
-                <form>
+                <form onKeyUp={this.handleKeyUp}>
                     {fetching ? <div className="overlay-loading"><Spinner/></div> : null}
                     {isDisplayRegister ? <Input type="email" placeholder="E-mail"
                         value={userData.email} name="email" error={userErrors.email} /> : null}
