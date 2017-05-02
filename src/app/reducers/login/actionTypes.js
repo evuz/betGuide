@@ -4,3 +4,5 @@ export const CLEAR_DATA_USER = 'CLEAR_DATA_USER';
 export const SAVE_ERROR_USER = 'SAVE_ERROR_USER';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 export const SET_LOGIN_FETCHING = 'SET_LOGIN_FETCHING';
+export const SET_USER = 'SET_USER';
+export const CLEAR_USER = 'CLEAR_USER';

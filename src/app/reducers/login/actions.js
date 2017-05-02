@@ -4,7 +4,9 @@ import {
     CLEAR_DATA_USER,
     SAVE_ERROR_USER,
     CLEAR_ERRORS,
-    SET_LOGIN_FETCHING
+    SET_LOGIN_FETCHING,
+    SET_USER,
+    CLEAR_USER
 } from './actionTypes';
 
 export function toogleDisplayRegister() {
@@ -30,7 +32,6 @@ export function signIn(userData) {
     } else {
         body = Object.assign({}, body, { displayName: username })
     }
-    console.log(body);
     return signUser(userData, (dispatch) => {
         fetch('http://localhost:3001/api/signin', {
             method: 'POST',
@@ -41,12 +42,21 @@ export function signIn(userData) {
         })
             .then(res => res.json())
             .then(res => {
+                const { displayName, email } = res;
                 dispatch({
                     type: SET_LOGIN_FETCHING,
                     isFetching: false
                 })
                 dispatch({
                     type: CLEAR_DATA_USER
+                })
+                localStorage.setItem('token', res.token);
+                dispatch({
+                    type: SET_USER,
+                    payload: {
+                        displayName,
+                        email
+                    }
                 })
             })
     })
@@ -67,12 +77,21 @@ export function signUp(userData) {
         })
             .then(res => res.json())
             .then(res => {
+                const { displayName, email } = res;
                 dispatch({
                     type: SET_LOGIN_FETCHING,
                     isFetching: false
                 })
                 dispatch({
                     type: CLEAR_DATA_USER
+                })
+                localStorage.setItem('token', res.token);
+                dispatch({
+                    type: SET_USER,
+                    payload: {
+                        displayName,
+                        email
+                    }
                 })
             })
     })
@@ -88,7 +107,6 @@ function validate(userData) {
 
     return errors;
 }
-
 function signUser(userData, postFn) {
     return (dispatch, getState) => {
         const errors = validate(userData);

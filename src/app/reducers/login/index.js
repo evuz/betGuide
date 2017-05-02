@@ -6,7 +6,9 @@ import {
     CLEAR_DATA_USER,
     SAVE_ERROR_USER,
     CLEAR_ERRORS,
-    SET_LOGIN_FETCHING
+    SET_LOGIN_FETCHING,
+    SET_USER,
+    CLEAR_USER
 } from './actionTypes';
 export * from './actions';
 
@@ -60,9 +62,21 @@ function fetching(state = false, action) {
     }
 }
 
+function user(state = {}, action) {
+    switch (action.type) {
+        case SET_USER:
+            return action.payload;
+        case CLEAR_USER:
+            return {};
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     isDisplayRegister,
     userData,
     userErrors,
-    fetching
+    fetching,
+    user
 })
