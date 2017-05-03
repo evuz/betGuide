@@ -42,7 +42,7 @@ export function signIn(userData) {
         })
             .then(res => res.json())
             .then(res => {
-                const { displayName, email } = res;
+                const { token } = res;
                 dispatch({
                     type: SET_LOGIN_FETCHING,
                     isFetching: false
@@ -50,14 +50,8 @@ export function signIn(userData) {
                 dispatch({
                     type: CLEAR_DATA_USER
                 })
-                localStorage.setItem('token', res.token);
-                dispatch({
-                    type: SET_USER,
-                    payload: {
-                        displayName,
-                        email
-                    }
-                })
+                localStorage.setItem('token', token);
+                dispatch(setUser(res));
             })
     })
 }
@@ -77,7 +71,7 @@ export function signUp(userData) {
         })
             .then(res => res.json())
             .then(res => {
-                const { displayName, email } = res;
+                const { token } = res;
                 dispatch({
                     type: SET_LOGIN_FETCHING,
                     isFetching: false
@@ -85,16 +79,21 @@ export function signUp(userData) {
                 dispatch({
                     type: CLEAR_DATA_USER
                 })
-                localStorage.setItem('token', res.token);
-                dispatch({
-                    type: SET_USER,
-                    payload: {
-                        displayName,
-                        email
-                    }
-                })
+                localStorage.setItem('token', token);
+                dispatch(setUser(res));
             })
     })
+}
+
+export function setUser(user) {
+    const { displayName, email } = user;
+    return {
+        type: SET_USER,
+        payload: {
+            displayName,
+            email
+        }
+    }
 }
 
 function validate(userData) {
