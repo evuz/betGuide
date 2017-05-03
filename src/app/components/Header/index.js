@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
+
 import { toogleVisibilityAside } from '../../reducers/layout';
 import { MdMenu } from 'react-icons/lib/md'
 
@@ -24,7 +26,7 @@ class Header extends Component {
                     <MdMenu className="icon" onClick={this.toogleAsideMenu} />
                 </div>
                 <div className="right">
-                    {user.email ? user.displayName : <a href="#" className="btn">Sign In</a> }
+                    {user.email ? user.displayName : <Link to="/login" className="btn">Sign In</Link>}
                 </div>
             </div>
         );
