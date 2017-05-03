@@ -1,9 +1,7 @@
 import { TOOGLE_VISIBILITY_ASIDE } from './actionTypes';
 export * from './actions';
 
-function layout(state = {
-    visibilityAside: true
-}, action) {
+function layout(state = {}, action) {
     switch (action.type) {
         case TOOGLE_VISIBILITY_ASIDE:
             const visibilityAside = !state.visibilityAside;

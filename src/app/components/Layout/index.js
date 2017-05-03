@@ -16,7 +16,7 @@ const Layout = (props) => {
     const aside = visibilityAside ? props.aside : null;
 
     return (
-        <div className="layout">
+        <div className="layout-component">
             {header ?
                 <header>
                     {header}

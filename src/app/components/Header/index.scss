@@ -1,5 +1,35 @@
-.header {
-    height: 80px;
+$cinnabar: #DD403A;
+
+.header-component {
     background-color: black;
     color: white;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    padding: 10px;
+    a {
+        text-decoration: none;
+    }
+    .left {
+        display: flex;
+        align-items: center;
+    }
+    .right {
+        display: flex;
+        align-items: center;
+    }
+    .icon {
+        height: 40px;
+        width: 40px;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    .btn {
+        border: 2px solid white;
+        border-radius: 5px;
+        color: white;
+        background-color: $cinnabar;
+        padding: 8px;
+    }
 }

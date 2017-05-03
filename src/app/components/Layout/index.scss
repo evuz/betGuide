@@ -1,4 +1,4 @@
-.layout {
+.layout-component {
     background-color: lightgray;
     display: flex;
     flex-direction: column;
@@ -7,8 +7,11 @@
     main {
         display: flex;
         flex-grow: 1;
-        aside {}
+        aside {
+            display: flex;
+        }
         section.container {
+            display: flex;
             flex-grow: 1;
         }
     }
