@@ -42,16 +42,7 @@ export function signIn(userData) {
         })
             .then(res => res.json())
             .then(res => {
-                const { token } = res;
-                dispatch({
-                    type: SET_LOGIN_FETCHING,
-                    isFetching: false
-                })
-                dispatch({
-                    type: CLEAR_DATA_USER
-                })
-                localStorage.setItem('token', token);
-                dispatch(setUser(res));
+                handleResponse(dispatch, res);
             })
     })
 }
@@ -71,16 +62,7 @@ export function signUp(userData) {
         })
             .then(res => res.json())
             .then(res => {
-                const { token } = res;
-                dispatch({
-                    type: SET_LOGIN_FETCHING,
-                    isFetching: false
-                })
-                dispatch({
-                    type: CLEAR_DATA_USER
-                })
-                localStorage.setItem('token', token);
-                dispatch(setUser(res));
+                handleResponse(dispatch, res);
             })
     })
 }
@@ -96,6 +78,44 @@ export function setUser(user) {
     }
 }
 
+function handleErrors(dispatch, err) {
+    const { code } = err;
+    let errors = {};
+    switch (code) {
+        case 11000:
+            errors.email = 'E-mail already exist'
+            break;
+        case 404:
+            errors.username = err.message
+            break;
+        case 401:
+            errors.username = err.message
+            break;
+    }
+    dispatch({
+        type: SAVE_ERROR_USER,
+        errors
+    })
+    dispatch({
+        type: SET_LOGIN_FETCHING,
+        isFetching: false
+    })
+}
+
+function handleResponse(dispatch, res) {
+    const { token, error } = res;
+    if (error) return handleErrors(dispatch, error);
+    dispatch({
+        type: CLEAR_DATA_USER
+    })
+    localStorage.setItem('token', token);
+    dispatch(setUser(res));
+    dispatch({
+        type: SET_LOGIN_FETCHING,
+        isFetching: false
+    })
+}
+
 function validate(userData) {
     let errors = {}
 
@@ -106,6 +126,7 @@ function validate(userData) {
 
     return errors;
 }
+
 function signUser(userData, postFn) {
     return (dispatch, getState) => {
         const errors = validate(userData);
