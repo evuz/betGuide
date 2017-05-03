@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Aside from './components/Aside';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import Layout from './components/Layout';
-import Login from './components/Login';
+import { BrowserRouter as Router, Route, IndexRoute } from 'react-router-dom';
+
+import Login from './views/login';
+import Title from './views/title';
 
 import { setUser } from './reducers/login';
 
@@ -27,11 +26,12 @@ class App extends Component {
     }
     render() {
         return (
-            <Layout
-                header={<Header />}
-            >
-                <Login />
-            </Layout>
+            <Router>
+                <div>
+                    <Route exact path="/" component={Title} />
+                    <Route path="/login" component={Login} />
+                </div>
+            </Router>
         );
     }
 }
