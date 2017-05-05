@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route, IndexRoute } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 
 import Login from './views/login';
 import Title from './views/title';
@@ -25,13 +26,14 @@ class App extends Component {
         }
     }
     render() {
+        const { history } = this.props;
         return (
-            <Router>
-                <div>
+            <ConnectedRouter history={history}>
+                <div id="app">
                     <Route exact path="/" component={Title} />
                     <Route path="/login" component={Login} />
                 </div>
-            </Router>
+            </ConnectedRouter>
         );
     }
 }
