@@ -3,8 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const PrivateRoute = (props) => {
-    const { user, component: Component, path, initApp} = props;
-    console.log(props);
+    const { user, component: Component, path, initApp } = props;
     return (
         !initApp ? null : <Route path={path} render={props => (
             user.email ? (

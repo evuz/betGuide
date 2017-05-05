@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 const PublicRoute = (props) => {
     const { user, component: Component, path, initApp} = props;
-    console.log(props);
+    
     return (
         !initApp ? null : <Route path={path} render={props => (
             !user.email ? (
