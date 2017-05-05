@@ -8,6 +8,7 @@ import {
     SET_USER,
     CLEAR_USER
 } from './actionTypes';
+import { push } from 'react-router-redux';
 
 export function toogleDisplayRegister() {
     return {
@@ -114,6 +115,7 @@ function handleResponse(dispatch, res) {
         type: SET_LOGIN_FETCHING,
         isFetching: false
     })
+    dispatch(push('/'));
 }
 
 function validate(userData) {
