@@ -26,7 +26,9 @@ class App extends Component {
             })
                 .then(res => res.json())
                 .then(res => {
+                    if (res.error) return localStorage.removeItem('token');
                     this.props.setUser(res.user);
+                    this.props.initApp()
                 })
         } else {
             this.props.initApp()
