@@ -5,8 +5,13 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import Login from './views/login';
 import Title from './views/title';
+import Global from './views/global';
+
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
 
 import { setUser } from './reducers/login';
+import { initApp } from './reducers/app';
 
 import './app.scss';
 
@@ -23,6 +28,8 @@ class App extends Component {
                 .then(res => {
                     this.props.setUser(res.user);
                 })
+        } else {
+            this.props.initApp()
         }
     }
     render() {
@@ -31,7 +38,8 @@ class App extends Component {
             <ConnectedRouter history={history}>
                 <div id="app">
                     <Route exact path="/" component={Title} />
-                    <Route path="/login" component={Login} />
+                    <PublicRoute path="/login" component={Login} />
+                    <PrivateRoute path="/global" component={Global} />
                 </div>
             </ConnectedRouter>
         );
@@ -39,7 +47,8 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-    setUser
+    setUser,
+    initApp
 }
 
 export default connect(null, mapDispatchToProps)(App);
