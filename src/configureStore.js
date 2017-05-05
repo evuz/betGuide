@@ -5,10 +5,12 @@ import createHistory from 'history/createBrowserHistory'
 
 import layout from './app/reducers/layout';
 import login from './app/reducers/login';
+import app from './app/reducers/app';
 
 export default function configureStore() {
     const history = createHistory();
     const appReducers = combineReducers({
+        app,
         layout,
         login,
         routerReducer
