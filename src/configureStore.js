@@ -3,9 +3,10 @@ import thunk from 'redux-thunk';
 import { routerReducer, routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 
+import app from './app/reducers/app';
 import layout from './app/reducers/layout';
 import login from './app/reducers/login';
-import app from './app/reducers/app';
+import stats from './app/reducers/stats';
 
 export default function configureStore() {
     const history = createHistory();
@@ -13,7 +14,8 @@ export default function configureStore() {
         app,
         layout,
         login,
-        routerReducer
+        routerReducer,
+        stats
     });
 
     let enhacer;
