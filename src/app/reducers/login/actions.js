@@ -68,6 +68,16 @@ export function signUp(userData) {
     })
 }
 
+export function logOut () {
+    return (dispatch, getState) => {
+        dispatch({
+            type: CLEAR_USER
+        })
+        localStorage.removeItem('token');
+        dispatch(push('/'));
+    }
+}
+
 export function setUser(user) {
     const { displayName, email } = user;
     return {
