@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 import { toogleVisibilityAside } from '../../reducers/layout';
+import { logOut } from '../../reducers/login';
 import { MdMenu } from 'react-icons/lib/md'
 
 import './index.scss';
@@ -11,11 +12,19 @@ class Header extends Component {
     constructor() {
         super();
         this.toogleAsideMenu = this.toogleAsideMenu.bind(this);
+        this.handleLogOut = this.handleLogOut.bind(this);
     }
 
     toogleAsideMenu(event) {
         event.preventDefault();
         this.props.toogleVisibilityAside();
+    }
+
+    handleLogOut (e) {
+        e.preventDefault();
+
+        const res = confirm('Do you want log out?');
+        if (res) this.props.logOut();
     }
 
     render() {
@@ -26,7 +35,11 @@ class Header extends Component {
                     <MdMenu className="icon" onClick={this.toogleAsideMenu} />
                 </div>
                 <div className="right">
-                    {user.email ? user.displayName : <Link to="/login" className="btn">Sign In</Link>}
+                    {
+                        user.email ? 
+                        <a href="#" onClick={this.handleLogOut}>{user.displayName}</a> : 
+                        <Link to="/login" className="btn">Sign In</Link>
+                    }
                 </div>
             </div>
         );
@@ -41,7 +54,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    toogleVisibilityAside
+    toogleVisibilityAside,
+    logOut
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
