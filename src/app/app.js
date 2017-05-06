@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
 import Login from './views/login';
@@ -34,23 +34,30 @@ class App extends Component {
             this.props.initApp()
         }
     }
+
     render() {
-        const { history } = this.props;
+        const { history, app: { initApp }, user: { email } } = this.props;
+        console.log(initApp);
         return (
-            <ConnectedRouter history={history}>
-                <div id="app">
-                    <Route exact path="/" component={Title} />
-                    <PublicRoute path="/login" component={Login} />
-                    <PrivateRoute path="/global" component={Global} />
-                </div>
-            </ConnectedRouter>
+            !initApp ? null :
+                <ConnectedRouter history={history}>
+                    <div id="app">
+                        <Route exact path="/" component={email ? Global : Title} />
+                        <Route path="/login" component={email ? () => (<Redirect to={'/'} />) : Login} />
+                    </div>
+                </ConnectedRouter>
         );
     }
 }
+
+const mapStateToProps = state => ({
+    app: state.app,
+    user: state.login.user
+})
 
 const mapDispatchToProps = {
     setUser,
     initApp
 }
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
