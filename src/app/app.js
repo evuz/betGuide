@@ -37,7 +37,6 @@ class App extends Component {
 
     render() {
         const { history, app: { initApp }, user: { email } } = this.props;
-        console.log(initApp);
         return (
             !initApp ? null :
                 <ConnectedRouter history={history}>
