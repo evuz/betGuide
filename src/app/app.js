@@ -7,9 +7,6 @@ import Login from './views/login';
 import Title from './views/title';
 import Global from './views/global';
 
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
-
 import { setUser } from './reducers/login';
 import { initApp } from './reducers/app';
 
