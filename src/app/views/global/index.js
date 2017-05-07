@@ -28,7 +28,11 @@ class GlobalView extends Component {
         const {stats} = this.props;
         return (
             <Layout header={<Header />} >
-                <StatsDetails/>
+                <div className="global_view">
+                    <div className="stats_panel">
+                        <StatsDetails/>
+                    </div>                    
+                </div>
             </Layout>
         );
     }
