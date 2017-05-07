@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Header from '../../components/Header';
 import Layout from '../../components/Layout';
 import StatsDetails from '../../components/StatsDetails';
+import StatsResume from '../../components/StatsResume';
 
 import { setUserStats } from '../../reducers/stats';
 
@@ -31,6 +32,7 @@ class GlobalView extends Component {
                 <div className="global_view">
                     <div className="stats_panel">
                         <StatsDetails/>
+                        <StatsResume />
                     </div>                    
                 </div>
             </Layout>
