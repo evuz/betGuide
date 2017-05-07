@@ -4,12 +4,13 @@ import './index.scss';
 
 const StatsDetailsItem = props => {
     const { id, avgOdd, avgStake, totalPicks, totalProfit } = props.stat;
-    let month = id.split('m').pop();
-    let day = month.split('y')[0];
-    month = month.split('y').pop();
+    const [, month, year] = id.split(/[a-z]/);
+    const date = new Date(year, month);
+    const monthStr = date.toLocaleDateString('en', {month: 'long'});
+
     return (
         <div className="stats_details_component_item">
-            <h1>{month + '-' + day}</h1>
+            <h1>{monthStr + ' ' + year}</h1>
             <p>{totalProfit}</p>
             <p>{totalPicks}</p>
         </div>
