@@ -12,9 +12,9 @@ class StatsResume extends Component {
         let resumeTotalProfit = 0;
 
         stats.forEach(stat => {
-            const { avgOdd, avgStake, totalPicks, totalProfit } = stat;
-            resumeTotalPicks += totalPicks;
-            resumeTotalProfit += totalProfit;
+            const { totalOdd, totalStake, winPicks, lostPicks, voidPicks, profits } = stat;
+            resumeTotalPicks += winPicks + lostPicks + voidPicks;
+            resumeTotalProfit += profits;
         })
 
         return (
