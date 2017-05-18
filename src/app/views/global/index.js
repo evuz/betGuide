@@ -12,41 +12,40 @@ import config from '../../../config';
 import './index.scss';
 
 class GlobalView extends Component {
-    componentWillMount() {
-        fetch(config.serverUrl + 'api/userstats', {
-            method: 'GET',
-            headers: {
-                'Authorization': 'Bearer ' + localStorage.token
-            },
-        })
-            .then(res => res.json())
-            .then(res => {
-                if (res.error) return;
-                this.props.setUserStats(res.payload);
-            })
-    }
+  componentWillMount() {
+    fetch(`${config.serverUrl}api/userstats`, {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`,
+      },
+    })
+      .then(res => res.json())
+      .then((res) => {
+        if (res.error) return;
+        this.props.setUserStats(res.payload);
+      });
+  }
 
-    render() {
-        const {stats} = this.props;
-        return (
-            <Layout header={<Header />} >
-                <div className="global_view">
-                    <div className="stats_panel">
-                        <StatsDetails/>
-                        <StatsResume />
-                    </div>                    
-                </div>
-            </Layout>
-        );
-    }
+  render() {
+    return (
+      <Layout header={<Header />} >
+        <div className="global_view">
+          <div className="stats_panel">
+            <StatsDetails />
+            <StatsResume />
+          </div>
+        </div>
+      </Layout>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
-    stats: state.stats
-})
+  stats: state.stats,
+});
 
 const mapDispatchToProps = {
-    setUserStats
-}
+  setUserStats,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(GlobalView);
