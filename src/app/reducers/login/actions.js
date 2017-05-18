@@ -9,6 +9,7 @@ import {
     CLEAR_USER
 } from './actionTypes';
 import { push } from 'react-router-redux';
+import config from '../../../config';
 
 export function toogleDisplayRegister() {
     return {
@@ -34,7 +35,7 @@ export function signIn(userData) {
         body = Object.assign({}, body, { displayName: username })
     }
     return signUser(userData, (dispatch) => {
-        fetch('http://localhost:3001/api/signin', {
+        fetch(config.serverUrl + 'api/signin', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
@@ -50,7 +51,7 @@ export function signIn(userData) {
 
 export function signUp(userData) {
     return signUser(userData, (dispatch) => {
-        fetch('http://localhost:3001/api/signup', {
+        fetch( config.serverUrl + 'api/signup', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

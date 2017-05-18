@@ -10,12 +10,14 @@ import Global from './views/global';
 import { setUser } from './reducers/login';
 import { initApp } from './reducers/app';
 
+import config from '../config';
+
 import './app.scss';
 
 class App extends Component {
     componentWillMount() {
         if (localStorage.token) {
-            fetch('http://localhost:3001/api/signin', {
+            fetch(config.serverUrl + 'api/signin', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.token

@@ -7,12 +7,13 @@ import StatsDetails from '../../components/StatsDetails';
 import StatsResume from '../../components/StatsResume';
 
 import { setUserStats } from '../../reducers/stats';
+import config from '../../../config';
 
 import './index.scss';
 
 class GlobalView extends Component {
     componentWillMount() {
-        fetch('http://localhost:3001/api/userstats', {
+        fetch(config.serverUrl + 'api/userstats', {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + localStorage.token
