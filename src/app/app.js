@@ -27,8 +27,9 @@ class App extends Component {
                 .then(res => {
                     if (res.error) localStorage.removeItem('token');
                     else this.props.setUser(res.user);
-                    this.props.initApp()
+                    this.props.initApp();
                 })
+                .catch(() => this.props.initApp())
         } else {
             this.props.initApp()
         }
