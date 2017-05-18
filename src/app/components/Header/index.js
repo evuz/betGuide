@@ -1,59 +1,37 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { MdMenu } from 'react-icons/lib/md';
-import { toogleVisibilityAside } from '../../reducers/layout';
-import { logOut } from '../../reducers/login';
+// import { Link } from 'react-router-dom';
+import { AppBar } from 'material-ui';
+import ButtonRight from './ButtonRight';
+import { toogleVisibilityDrawer } from '../../reducers/layout';
 import './index.scss';
 
 class Header extends Component {
   constructor() {
     super();
-    this.toogleAsideMenu = this.toogleAsideMenu.bind(this);
-    this.handleLogOut = this.handleLogOut.bind(this);
+    this.toogleDrawer = this.toogleDrawer.bind(this);
   }
 
-  toogleAsideMenu(event) {
+  toogleDrawer(event) {
     event.preventDefault();
-    this.props.toogleVisibilityAside();
-  }
-
-  handleLogOut(e) {
-    e.preventDefault();
-
-    const res = confirm('Do you want log out?');
-    if (res) this.props.logOut();
+    this.props.toogleVisibilityDrawer();
   }
 
   render() {
-    const { user } = this.props;
     return (
       <div className="header-component">
-        <div className="left">
-          <MdMenu className="icon" onClick={this.toogleAsideMenu} />
-        </div>
-        <div className="right">
-          {
-            user.email ?
-              <a href="#" onClick={this.handleLogOut}>{user.displayName}</a> :
-              <Link to="/login" className="btn">Sign In</Link>
-          }
-        </div>
+        <AppBar
+          title="Title"
+          onLeftIconButtonTouchTap={this.toogleDrawer}
+          iconElementRight={<ButtonRight />}
+        />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  const { user } = state.login;
-  return {
-    user,
-  };
-};
-
 const mapDispatchToProps = {
-  toogleVisibilityAside,
-  logOut,
+  toogleVisibilityDrawer,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(null, mapDispatchToProps)(Header);
