@@ -1,12 +1,12 @@
-import { TOOGLE_VISIBILITY_ASIDE } from './actionTypes';
+import { TOOGLE_VISIBILITY_DRAWER } from './actionTypes';
 
 export * from './actions';
 
 function layout(state = {}, action) {
   switch (action.type) {
-    case TOOGLE_VISIBILITY_ASIDE: {
-      const visibilityAside = !state.visibilityAside;
-      return Object.assign({}, state, { visibilityAside });
+    case TOOGLE_VISIBILITY_DRAWER: {
+      const visibilityDrawer = !state.visibilityDrawer;
+      return Object.assign({}, state, { visibilityDrawer });
     }
     default:
       return state;

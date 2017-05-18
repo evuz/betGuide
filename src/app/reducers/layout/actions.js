@@ -1,7 +1,7 @@
-import { TOOGLE_VISIBILITY_ASIDE } from './actionTypes';
+import { TOOGLE_VISIBILITY_DRAWER } from './actionTypes';
 
-export function toogleVisibilityAside() {
+export function toogleVisibilityDrawer() {
   return {
-    type: TOOGLE_VISIBILITY_ASIDE,
+    type: TOOGLE_VISIBILITY_DRAWER,
   };
 }
