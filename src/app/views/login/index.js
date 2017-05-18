@@ -7,11 +7,11 @@ import Login from '../../components/Login';
 import './index.scss';
 
 const LoginView = () => (
-    <Layout
-        header={<Header />}
-    >
-        <Login />
-    </Layout>
-)
+  <Layout
+    header={<Header />}
+  >
+    <Login />
+  </Layout>
+);
 
 export default LoginView;

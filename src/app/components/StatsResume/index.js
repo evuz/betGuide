@@ -1,33 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 
-import './index.scss'
+import './index.scss';
 
-class StatsResume extends Component {
-    render() {
-        const { stats } = this.props;
-        let resumeAvgOdd = 0;
-        let resumeAvgStake = 0;
-        let resumeTotalPicks = 0;
-        let resumeTotalProfit = 0;
+const StatsResume = (props) => {
+  const { stats } = props;
+  let resumeTotalPicks = 0;
+  let resumeTotalProfit = 0;
 
-        stats.forEach(stat => {
-            const { avgOdd, avgStake, totalPicks, totalProfit } = stat;
-            resumeTotalPicks += totalPicks;
-            resumeTotalProfit += totalProfit;
-        })
+  stats.forEach((stat) => {
+    const { totalPicks, totalProfit } = stat;
+    resumeTotalPicks += totalPicks;
+    resumeTotalProfit += totalProfit;
+  });
 
-        return (
-            <div className="stats_resume_component">
-                <p>Total Picks: {resumeTotalPicks}</p>
-                <p>Total Profit: {resumeTotalProfit}</p>
-            </div>
-        );
-    }
-}
+  return (
+    <div className="stats_resume_component">
+      <p>Total Picks: {resumeTotalPicks}</p>
+      <p>Total Profit: {resumeTotalProfit}</p>
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
-    stats: state.stats
-})
+  stats: state.stats,
+});
 
 export default connect(mapStateToProps)(StatsResume);

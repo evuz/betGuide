@@ -1,7 +1,7 @@
 import { INIT_APP } from './actionTypes';
 
-export function initApp () {
-    return {
-        type: INIT_APP
-    }
+export function setInitApp() {
+  return {
+    type: INIT_APP,
+  };
 }
