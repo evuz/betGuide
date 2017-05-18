@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-
+import { MuiThemeProvider } from 'material-ui/styles';
 import Login from './views/login';
 import Title from './views/title';
 import Global from './views/global';
@@ -40,10 +40,12 @@ class App extends Component {
     return (
       !initApp ? null :
       <ConnectedRouter history={history}>
-        <div id="app">
-          <Route exact path="/" component={email ? Global : Title} />
-          <Route path="/login" component={email ? () => (<Redirect to={'/'} />) : Login} />
-        </div>
+        <MuiThemeProvider>
+          <div id="app">
+            <Route exact path="/" component={email ? Global : Title} />
+            <Route path="/login" component={email ? () => (<Redirect to={'/'} />) : Login} />
+          </div>
+        </MuiThemeProvider>
       </ConnectedRouter>
     );
   }
