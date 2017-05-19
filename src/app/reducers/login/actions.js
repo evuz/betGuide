@@ -49,7 +49,7 @@ export function signIn(userData) {
 
 export function signUp(userData) {
   return signUser(userData, (dispatch) => {
-    fetch(`${config.serverUrl} api/signup`, {
+    fetch(`${config.serverUrl}api/signup`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
