@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import Header from '../../components/Header';
 import Layout from '../../components/Layout';
 import StatsDetails from '../../components/StatsDetails';
 import StatsResume from '../../components/StatsResume';
-
 import { setUserStats } from '../../reducers/stats';
 import config from '../../../config';
 
@@ -30,10 +28,8 @@ class GlobalView extends Component {
     return (
       <Layout header={<Header />} >
         <div className="global_view">
-          <div className="stats_panel">
-            <StatsDetails />
-            <StatsResume />
-          </div>
+          <StatsResume />
+          <StatsDetails />
         </div>
       </Layout>
     );

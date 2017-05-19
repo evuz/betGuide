@@ -1,14 +1,8 @@
 .global_view {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     flex-grow: 1;
-
-    .stats_panel {
-        background-color: lavenderblush;
-        display: flex;
-        height: 80%;
-        width: 80%;
-        border-radius: 10px;
-    }
+    margin: 5%;
 }
