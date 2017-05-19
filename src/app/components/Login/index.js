@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import Input from './Input';
-import Spinner from './Spinner';
-import { toogleDisplayRegister, signUp, signIn } from '../../reducers/login';
+import {
+  Card,
+  CardText,
+  CardActions,
+  TextField,
+  FlatButton,
+  CircularProgress,
+} from 'material-ui';
+import { toogleDisplayRegister, signUp, signIn, saveDataUser, clearData } from '../../reducers/login';
 import './index.scss';
 
 class Login extends Component {
@@ -13,6 +19,13 @@ class Login extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDisplay = this.handleDisplay.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
+
+  handleInputChange(e) {
+    this.props.saveDataUser({
+      [e.target.name]: e.target.value,
+    });
   }
 
   handleSubmit(e) {
@@ -32,6 +45,7 @@ class Login extends Component {
 
   handleDisplay(e) {
     e.preventDefault();
+    this.props.clearData();
     this.props.toogleDisplayRegister();
   }
 
@@ -46,39 +60,64 @@ class Login extends Component {
     const textPlaceholder = isDisplayRegister ? 'Username' : 'Username or e-mail';
     return (
       <div className="login-component">
-        <form onKeyUp={this.handleKeyUp}>
-          {fetching ? <div className="overlay-loading"><Spinner /></div> : null}
-          {isDisplayRegister ?
-            <Input
-              type="email"
-              placeholder="E-mail"
-              value={userData.email}
-              name="email"
-              error={userErrors.email}
-            /> : null}
-          <Input
-            type="text"
-            placeholder={textPlaceholder}
-            value={userData.username}
-            name="username"
-            error={userErrors.username}
-          />
-          <Input
-            type="password"
-            placeholder="Password"
-            value={userData.password}
-            name="password"
-            error={userErrors.password}
-          />
-          <div className="button-box">
-            <a href="#" className="btn-register" onClick={this.handleDisplay}>{isDisplayRegister ? 'Sign In' : 'Sign Up'}</a>
-            <a href="#" className="btn-login" onClick={this.handleSubmit}>{isDisplayRegister ? 'Register' : 'Log In'}</a>
-          </div>
-        </form>
+        <Card style={style.card} onKeyUp={this.handleKeyUp}>
+          {fetching ? <div className="overlay-loading"><CircularProgress size={60} thickness={5} /></div> : null}
+          <CardText>
+            {isDisplayRegister ?
+              <TextField
+                hintText="E-mail"
+                type="email"
+                value={userData.email}
+                name="email"
+                errorText={userErrors.email}
+                onChange={this.handleInputChange}
+              /> : null}
+            <TextField
+              hintText={textPlaceholder}
+              type="text"
+              value={userData.username}
+              name="username"
+              errorText={userErrors.username}
+              onChange={this.handleInputChange}
+            />
+            <TextField
+              hintText="Password"
+              type="password"
+              value={userData.password}
+              name="password"
+              errorText={userErrors.password}
+              onChange={this.handleInputChange}
+            />
+          </CardText>
+          <CardActions style={style.action}>
+            <FlatButton
+              label={isDisplayRegister ? 'Sign In' : 'Sign Up'}
+              secondary
+              onTouchTap={this.handleDisplay}
+            />
+            <FlatButton
+              label={isDisplayRegister ? 'Register' : 'Log In'}
+              primary
+              onTouchTap={this.handleSubmit}
+            />
+          </CardActions>
+        </Card>
       </div>
     );
   }
 }
+
+const style = {
+  card: {
+    width: '300px',
+    position: 'relative',
+  },
+  action: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    fontWeight: 'bold',
+  },
+};
 
 const mapStateToProps = state => ({
   login: state.login,
@@ -88,6 +127,8 @@ const mapDispatchToProps = {
   toogleDisplayRegister,
   signIn,
   signUp,
+  saveDataUser,
+  clearData,
 };
 
 Login.propTypes = {

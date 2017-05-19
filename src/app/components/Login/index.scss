@@ -1,7 +1,3 @@
-// Colors
-$onyx: #3E363F;
-$cinnabar: #DD403A;
-$cosmiclatte: #FFFCE8;
 .login-component {
     position: absolute;
     top: 0;
@@ -12,51 +8,13 @@ $cosmiclatte: #FFFCE8;
     flex-grow: 1;
     justify-content: center;
     align-items: center;
-    a {
-        text-decoration: none;
-    }
-    form {
-        background-color: $onyx;
-        width: 300px;
-        height: 200px;
-        padding: 20px;
-        border-radius: 3px;
-        position: relative;
+    .overlay-loading {
+        position: absolute;
+        height: 100%;
+        width: 100%;
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        .overlay-loading {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            opacity: 0.5;
-        }
-        .button-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            .btn-register {
-                color: rgba($cosmiclatte, .3);
-                &:hover {
-                    color: $cosmiclatte;
-                }
-            }
-            .btn-login {
-                border-radius: 5px;
-                min-width: 80px;
-                height: 40px;
-                padding: 10px;
-                background-color: $cinnabar;
-                color: $cosmiclatte;
-                text-align: center;
-                &:hover {
-                    font-size: 15px;
-                }
-            }
-        }
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0,0,0,0.2);
     }
 }

@@ -24,6 +24,25 @@ export function saveDataUser(userData) {
   };
 }
 
+export function clearErrors() {
+  return {
+    type: CLEAR_ERRORS,
+  };
+}
+
+export function clearDataUser() {
+  return {
+    type: CLEAR_DATA_USER,
+  };
+}
+
+export function clearData() {
+  return (dispatch) => {
+    dispatch(clearDataUser());
+    dispatch(clearErrors());
+  };
+}
+
 export function signIn(userData) {
   const { username, password } = userData;
   let body = { password };
