@@ -13,6 +13,10 @@ const StatsDetails = (props) => {
   return (
     <div className="stats_details_component">
       {statsRender}
+      {statsRender}
+      {statsRender}
+      {statsRender}
+      {statsRender}
     </div>
   );
 };

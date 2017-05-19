@@ -1,6 +1,6 @@
 .stats_details_component {
-    flex-basis: 50%;
-    border-right: 1px solid silver;
     display: flex;
-    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 15px 0;
 }

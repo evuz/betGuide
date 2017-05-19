@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Card, CardText, CardHeader } from 'material-ui';
 import './index.scss';
 
 const StatsDetailsItem = (props) => {
@@ -9,9 +9,20 @@ const StatsDetailsItem = (props) => {
 
   return (
     <div className="stats_details_component_item">
-      <h1>{`${monthStr} ${date.getFullYear()}`}</h1>
-      <p>{profits}</p>
-      <p>{winPicks + lostPicks + voidPicks}</p>
+      <Card>
+        <CardHeader
+          title={`${monthStr} ${date.getFullYear()}`}
+        />
+        <CardText>
+          <p>{profits}</p>
+          <p>{winPicks + lostPicks + voidPicks}</p>
+        </CardText>
+      </Card>
+      {
+        // <h1>{`${monthStr} ${date.getFullYear()}`}</h1>
+        // <p>{profits}</p>
+        // <p>{winPicks + lostPicks + voidPicks}</p>
+      }
     </div>
   );
 };
