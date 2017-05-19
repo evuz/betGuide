@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Card, CardHeader, CardText } from 'material-ui';
 
 import './index.scss';
 
@@ -13,11 +14,17 @@ const StatsResume = (props) => {
     resumeTotalPicks += winPicks + lostPicks + voidPicks;
     resumeTotalProfit += profits;
   });
-
   return (
     <div className="stats_resume_component">
-      <p>Total Picks: {resumeTotalPicks}</p>
-      <p>Total Profit: {resumeTotalProfit}</p>
+      <Card>
+        <CardHeader
+          title="Resume"
+        />
+        <CardText>
+          <p>Resume Total Picks: {resumeTotalPicks}</p>
+          <p>Resume Total Profit: {resumeTotalProfit.toFixed(2)}</p>
+        </CardText>
+      </Card>
     </div>
   );
 };
