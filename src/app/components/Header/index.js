@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import { AppBar } from 'material-ui';
 import ButtonRight from './ButtonRight';
 import { toogleVisibilityDrawer } from '../../reducers/layout';
@@ -23,7 +22,7 @@ class Header extends Component {
       <div className="header-component">
         <AppBar
           title="Title"
-          showMenuIconButton={menuIcon}
+          showMenuIconButton={menuIcon === undefined ? false : menuIcon}
           onLeftIconButtonTouchTap={this.toogleDrawer}
           iconElementRight={<ButtonRight />}
         />
