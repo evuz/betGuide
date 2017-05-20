@@ -18,10 +18,12 @@ class Header extends Component {
   }
 
   render() {
+    const { menuIcon } = this.props;
     return (
       <div className="header-component">
         <AppBar
           title="Title"
+          showMenuIconButton={menuIcon}
           onLeftIconButtonTouchTap={this.toogleDrawer}
           iconElementRight={<ButtonRight />}
         />
