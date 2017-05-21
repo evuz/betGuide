@@ -1,12 +1,20 @@
 import React from 'react';
-import { Card, CardText, CardHeader } from 'material-ui';
+import {
+  Card,
+  CardText,
+  CardHeader,
+  CardActions,
+  FlatButton,
+} from 'material-ui';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
 import './index.scss';
 
 const StatsDetailsItem = (props) => {
-  const { id, winPicks, lostPicks, voidPicks, profits } = props.stat;
+  const { id, winPicks, lostPicks, voidPicks, profits, totalStake } = props.stat;
   const date = new Date(parseInt(id, 10));
   const monthStr = date.toLocaleDateString('en', { month: 'long' });
+  const totalPicks = winPicks + lostPicks + voidPicks;
+  const monthYield = (profits / (totalStake)) * 100;
 
   const data = [
     { name: 'Wins', value: winPicks },
@@ -42,9 +50,12 @@ const StatsDetailsItem = (props) => {
           </PieChart>
         </CardText>
         <CardText style={style.cardText}>
-          <p>{profits}</p>
-          <p>{`${winPicks} ${lostPicks}  ${voidPicks}`}</p>
+          <span><b>Yield:</b> {monthYield.toFixed(2)}%</span>
+          <span><b>Nº Picks:</b> {totalPicks}</span>
         </CardText>
+        <CardActions style={style.cardActions}>
+          <FlatButton label="Details" primary />
+        </CardActions>
       </Card>
     </div>
   );
@@ -61,7 +72,9 @@ const style = {
     position: 'relative',
   },
   cardText: {
-    paddingBottom: '0px',
+    paddingBottom: '8px',
+    display: 'flex',
+    justifyContent: 'space-around',
   },
   pieChartSpan: {
     position: 'absolute',
@@ -75,6 +88,10 @@ const style = {
     text: {
       fontSize: '28px',
     },
+  },
+  cardActions: {
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
 };
 
