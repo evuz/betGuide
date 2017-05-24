@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Card,
   CardText,
@@ -54,7 +55,11 @@ const StatsDetailsItem = (props) => {
           <span><b>Nº Picks:</b> {totalPicks}</span>
         </CardText>
         <CardActions style={style.cardActions}>
-          <FlatButton label="Details" primary />
+          <FlatButton
+            label="Details"
+            primary
+            containerElement={<Link to="/monthStats" />}
+          />
         </CardActions>
       </Card>
     </div>
