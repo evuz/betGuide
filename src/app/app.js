@@ -6,6 +6,7 @@ import { MuiThemeProvider } from 'material-ui/styles';
 import Login from './views/login';
 import Title from './views/title';
 import Global from './views/global';
+import MonthStats from './views/monthStats';
 
 import { setUser } from './reducers/login';
 import { setInitApp } from './reducers/app';
@@ -44,6 +45,7 @@ class App extends Component {
           <div id="app">
             <Route exact path="/" component={email ? Global : Title} />
             <Route path="/login" component={email ? () => (<Redirect to={'/'} />) : Login} />
+            <Route path="/monthStats" component={!email ? () => (<Redirect to={'/'} />) : MonthStats} />
           </div>
         </MuiThemeProvider>
       </ConnectedRouter>
