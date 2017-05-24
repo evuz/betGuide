@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 import Header from '../../components/Header';
 import Layout from '../../components/Layout';
 import StatsDetails from '../../components/StatsDetails';
@@ -31,6 +34,12 @@ class GlobalView extends Component {
           <StatsResume />
           <StatsDetails />
         </div>
+        <FloatingActionButton
+          style={styles.floatButton}
+          onTouchTap={() => this.props.push('/monthStats')}
+        >
+          <ContentAdd />
+        </FloatingActionButton>
       </Layout>
     );
   }
@@ -42,6 +51,15 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   setUserStats,
+  push,
+};
+
+const styles = {
+  floatButton: {
+    position: 'absolute',
+    bottom: '50px',
+    right: '50px',
+  },
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(GlobalView);
