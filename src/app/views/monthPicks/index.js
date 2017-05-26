@@ -1,9 +1,9 @@
 import React from 'react';
 
-const MonthStats = () => (
+const MonthPicks = () => (
   <div className="month_stats_view">
     MonthStats
   </div>
 );
 
-export default MonthStats;
+export default MonthPicks;
