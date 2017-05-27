@@ -7,24 +7,13 @@ import Header from '../../components/Header';
 import Layout from '../../components/Layout';
 import StatsDetails from '../../components/StatsDetails';
 import StatsResume from '../../components/StatsResume';
-import { setUserStats } from '../../reducers/stats';
-import config from '../../../config';
+import { setUserStats, fetchUserStats } from '../../reducers/stats';
 
 import './index.scss';
 
 class GlobalView extends Component {
   componentWillMount() {
-    fetch(`${config.serverUrl}api/userstats`, {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`,
-      },
-    })
-      .then(res => res.json())
-      .then((res) => {
-        if (res.error) return;
-        this.props.setUserStats(res.payload);
-      });
+    this.props.fetchUserStats();
   }
 
   render() {
@@ -45,13 +34,10 @@ class GlobalView extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  stats: state.stats,
-});
-
 const mapDispatchToProps = {
   setUserStats,
   push,
+  fetchUserStats,
 };
 
 const styles = {
@@ -62,4 +48,4 @@ const styles = {
   },
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(GlobalView);
+export default connect(null, mapDispatchToProps)(GlobalView);

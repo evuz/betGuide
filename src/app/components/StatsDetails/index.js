@@ -4,7 +4,7 @@ import StatsDetailsItem from './StatsDetailsItem';
 import './index.scss';
 
 const StatsDetails = (props) => {
-  const { stats } = props;
+  const { stats: { stats } } = props;
 
   const statsRender = stats.map((stat, index) => (
     <StatsDetailsItem stat={stat} key={index} />

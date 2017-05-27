@@ -5,7 +5,7 @@ import { Card, CardHeader, CardText } from 'material-ui';
 import './index.scss';
 
 const StatsResume = (props) => {
-  const { stats } = props;
+  const { stats: { stats } } = props;
   let resumeTotalPicks = 0;
   let resumeTotalProfit = 0;
 

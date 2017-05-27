@@ -1,1 +1,2 @@
 export const SET_USER_STATS = 'SET_USER_STATS';
+export const FETCH_USER_STATS = 'FETCH_USER_STATS';
