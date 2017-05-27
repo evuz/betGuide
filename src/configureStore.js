@@ -7,6 +7,7 @@ import app from './app/reducers/app';
 import layout from './app/reducers/layout';
 import login from './app/reducers/login';
 import stats from './app/reducers/stats';
+import picks from './app/reducers/picks';
 
 export default function configureStore() {
   const history = createHistory();
@@ -16,6 +17,7 @@ export default function configureStore() {
     login,
     routerReducer,
     stats,
+    picks,
   });
 
   let enhacer;
