@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import StatsDetailsItem from './StatsDetailsItem';
-import './index.scss';
+import styles from './styles';
 
 const StatsDetails = (props) => {
   const { stats: { stats } } = props;
@@ -11,7 +11,7 @@ const StatsDetails = (props) => {
   ));
 
   return (
-    <div className="stats_details_component">
+    <div style={styles.statsDetailsComponent}>
       {statsRender}
     </div>
   );

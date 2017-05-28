@@ -13,7 +13,7 @@ import { setInitApp } from './reducers/app';
 
 import config from '../config';
 
-import './app.scss';
+import './app.css';
 
 class App extends Component {
   componentWillMount() {

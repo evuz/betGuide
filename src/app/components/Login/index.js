@@ -10,7 +10,7 @@ import {
   CircularProgress,
 } from 'material-ui';
 import { toogleDisplayRegister, signUp, signIn, saveDataUser, clearData } from '../../reducers/login';
-import './index.scss';
+import styles from './styles';
 
 class Login extends Component {
   constructor() {
@@ -59,9 +59,15 @@ class Login extends Component {
     const { isDisplayRegister, userData, userErrors, fetching } = this.props.login;
     const textPlaceholder = isDisplayRegister ? 'Username' : 'Username or e-mail';
     return (
-      <div className="login-component">
-        <Card style={style.card} onKeyUp={this.handleKeyUp}>
-          {fetching ? <div className="overlay-loading"><CircularProgress size={60} thickness={5} /></div> : null}
+      <div style={styles.loginComponent}>
+        <Card style={styles.card} onKeyUp={this.handleKeyUp}>
+          {
+            fetching ?
+              <div style={styles.overlayLoading}>
+                <CircularProgress size={60} thickness={5} />
+              </div> :
+              null
+          }
           <CardText>
             {isDisplayRegister ?
               <TextField
@@ -89,7 +95,7 @@ class Login extends Component {
               onChange={this.handleInputChange}
             />
           </CardText>
-          <CardActions style={style.action}>
+          <CardActions style={styles.action}>
             <FlatButton
               label={isDisplayRegister ? 'Sign In' : 'Sign Up'}
               secondary
@@ -106,18 +112,6 @@ class Login extends Component {
     );
   }
 }
-
-const style = {
-  card: {
-    width: '300px',
-    position: 'relative',
-  },
-  action: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    fontWeight: 'bold',
-  },
-};
 
 const mapStateToProps = state => ({
   login: state.login,

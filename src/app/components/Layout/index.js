@@ -4,7 +4,7 @@ import { Drawer } from 'material-ui';
 import { connect } from 'react-redux';
 import { toogleVisibilityDrawer, setVisibilityDrawer } from '../../reducers/layout';
 
-import './index.scss';
+import styles from './styles';
 
 class Layout extends Component {
   componentWillUnmount() {
@@ -14,15 +14,15 @@ class Layout extends Component {
   render() {
     const { header, children, layout: { visibilityDrawer }, docked } = this.props;
     return (
-      <div className="layout-component">
+      <div style={styles.layoutComponent}>
         {header ?
           <header>
             {header}
           </header>
           : null
         }
-        <main>
-          <section className="container">
+        <main style={styles.main}>
+          <section style={styles.container}>
             {children}
           </section>
           {docked ?

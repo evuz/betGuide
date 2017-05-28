@@ -9,7 +9,7 @@ import StatsDetails from '../../components/StatsDetails';
 import StatsResume from '../../components/StatsResume';
 import { setUserStats, fetchUserStats } from '../../reducers/stats';
 
-import './index.scss';
+import styles from './styles';
 
 class GlobalView extends Component {
   componentWillMount() {
@@ -19,7 +19,7 @@ class GlobalView extends Component {
   render() {
     return (
       <Layout header={<Header />} >
-        <div className="global_view">
+        <div style={styles.globalView}>
           <StatsResume />
           <StatsDetails />
         </div>
@@ -38,14 +38,6 @@ const mapDispatchToProps = {
   setUserStats,
   push,
   fetchUserStats,
-};
-
-const styles = {
-  floatButton: {
-    position: 'absolute',
-    bottom: '50px',
-    right: '50px',
-  },
 };
 
 export default connect(null, mapDispatchToProps)(GlobalView);
