@@ -1,24 +1,41 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import StatsDetailsItem from './StatsDetailsItem';
+import { setMonthPicks } from '../../reducers/picks';
+
 import './index.scss';
 
-const StatsDetails = (props) => {
-  const { stats: { stats } } = props;
+class StatsDetails extends Component {
+  constructor() {
+    super();
+    this.handleTap = this.handleTap.bind(this);
+  }
 
-  const statsRender = stats.map((stat, index) => (
-    <StatsDetailsItem stat={stat} key={index} />
-  ));
+  handleTap(id) {
+    this.props.setMonthPicks(id);
+  }
 
-  return (
-    <div className="stats_details_component">
-      {statsRender}
-    </div>
-  );
-};
+  render() {
+    const { stats: { stats } } = this.props;
+
+    const statsRender = stats.map((stat, index) => (
+      <StatsDetailsItem stat={stat} key={index} handleTap={this.handleTap} />
+    ));
+
+    return (
+      <div className="stats_details_component">
+        {statsRender}
+      </div>
+    );
+  }
+}
 
 const mapsStateToProps = state => ({
   stats: state.stats,
 });
 
-export default connect(mapsStateToProps)(StatsDetails);
+const mapDispatchToProps = {
+  setMonthPicks,
+};
+
+export default connect(mapsStateToProps, mapDispatchToProps)(StatsDetails);

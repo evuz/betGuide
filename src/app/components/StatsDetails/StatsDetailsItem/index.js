@@ -58,6 +58,7 @@ const StatsDetailsItem = (props) => {
           <FlatButton
             label="Details"
             primary
+            onTouchTap={() => props.handleTap(id)}
             containerElement={<Link to="/monthStats" />}
           />
         </CardActions>

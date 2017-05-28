@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { FETCH_USER_PICKS, SET_USER_PICKS } from './actionTypes';
+import { FETCH_USER_PICKS, SET_USER_PICKS, SET_MONTH_PICKS } from './actionTypes';
 
 export * from './actions';
 
@@ -21,7 +21,17 @@ function fetch(state = false, action) {
   }
 }
 
+function month(state = null, action) {
+  switch (action.type) {
+    case SET_MONTH_PICKS:
+      return action.month;
+    default:
+      return state;
+  }
+}
+
 export default combineReducers({
   picks,
   fetch,
+  month,
 });

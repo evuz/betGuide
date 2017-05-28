@@ -1,4 +1,4 @@
-import { SET_USER_PICKS, FETCH_USER_PICKS } from './actionTypes';
+import { SET_USER_PICKS, FETCH_USER_PICKS, SET_MONTH_PICKS } from './actionTypes';
 import config from '../../../config';
 
 export function setUserPicks(picks) {
@@ -15,9 +15,17 @@ export function setFetchUserPicks(value) {
   };
 }
 
+export function setMonthPicks(month) {
+  return {
+    type: SET_MONTH_PICKS,
+    month,
+  };
+}
+
 export function fetchUserPicks(month) {
   return (dispatch) => {
     dispatch(setFetchUserPicks(true));
+    dispatch(setUserPicks([]));
     fetch(`${config.serverUrl}api/getPicks/${month}`, {
       method: 'GET',
       headers: {
