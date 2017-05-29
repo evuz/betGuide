@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import StatsDetailsItem from './StatsDetailsItem';
 import { setMonthPicks } from '../../reducers/picks';
 
-import './index.scss';
+import styles from './styles';
 
 class StatsDetails extends Component {
   constructor() {
@@ -23,7 +23,7 @@ class StatsDetails extends Component {
     ));
 
     return (
-      <div className="stats_details_component">
+      <div style={styles.statsDetailsComponent}>
         {statsRender}
       </div>
     );

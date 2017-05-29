@@ -1,7 +1,5 @@
-// Fonts
+/*Font*/
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
-$font-stack: 'Roboto', sans-serif;
 
 *, *:before, *:after {
     box-sizing: inherit;
@@ -17,7 +15,7 @@ html, body {
 }
 
 body {
-    font-family: $font-stack;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
 }

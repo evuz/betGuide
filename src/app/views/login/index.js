@@ -4,8 +4,6 @@ import Header from '../../components/Header';
 import Layout from '../../components/Layout';
 import Login from '../../components/Login';
 
-import './index.scss';
-
 const LoginView = () => (
   <Layout
     header={<Header />}

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Card, CardHeader, CardText } from 'material-ui';
 
-import './index.scss';
+import styles from './styles';
 
 const StatsResume = (props) => {
   const { stats: { stats } } = props;
@@ -15,7 +15,7 @@ const StatsResume = (props) => {
     resumeTotalProfit += profits;
   });
   return (
-    <div className="stats_resume_component">
+    <div style={styles.statsResumeComponent}>
       <Card>
         <CardHeader
           title="Resume"

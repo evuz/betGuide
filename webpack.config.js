@@ -28,11 +28,10 @@ module.exports = {
         },
       },
       {
-        test: /\.(sass|scss)$/, // Check for sass or scss file names
+        test: /\.(css)$/, // Check for sass or scss file names
         use: [
           'style-loader',
           'css-loader',
-          'sass-loader',
         ],
       },
     ],

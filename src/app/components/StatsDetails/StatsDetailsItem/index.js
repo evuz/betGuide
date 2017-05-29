@@ -8,7 +8,7 @@ import {
   FlatButton,
 } from 'material-ui';
 import { PieChart, Pie, Cell, Tooltip } from 'recharts';
-import './index.scss';
+import styles from './styles';
 
 const StatsDetailsItem = (props) => {
   const { id, winPicks, lostPicks, voidPicks, profits, totalStake } = props.stat;
@@ -25,7 +25,7 @@ const StatsDetailsItem = (props) => {
   const COLORS = ['#50b432', '#058dc7', '#ed561b'];
 
   return (
-    <div className="stats_details_component_item">
+    <div style={styles.statsDetailsComponentItem}>
       <Card style={style.card}>
         <CardHeader
           title={`${monthStr} ${date.getFullYear()}`}
