@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Header from '../../components/Header';
 import Layout from '../../components/Layout';
+import ListPicks from '../../components/ListPicks';
 import { fetchUserPicks } from '../../reducers/picks';
 
 class MonthPicks extends Component {
@@ -12,14 +13,16 @@ class MonthPicks extends Component {
   }
 
   render() {
-    const { picks: { picks } } = this.props;
+    const { picks: { picks, month } } = this.props;
 
-    console.log(picks);
     return (
       <Layout
         header={<Header />}
       >
-        <h1>Details</h1>
+        <ListPicks
+          picks={picks}
+          monthId={month}
+        />
       </Layout>
     );
   }
