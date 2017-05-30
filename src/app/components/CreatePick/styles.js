@@ -8,6 +8,7 @@ const styles = {
   },
   cardText: {
     display: 'flex',
+    paddingTop: '0px',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
   },

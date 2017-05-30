@@ -12,6 +12,7 @@ const initialPickData = {
   pick: '',
   stake: '',
   odd: '',
+  date: undefined,
 };
 
 function pickData(state = initialPickData, action) {
