@@ -1,0 +1,2 @@
+export const SAVE_DATA_PICK = 'SAVE_DATA_PICK';
+export const CLEAR_DATA_PICK = 'CLEAR_DATA_PICK';
