@@ -12,7 +12,7 @@ class Layout extends Component {
   }
 
   render() {
-    const { header, children, layout: { visibilityDrawer }, docked } = this.props;
+    const { header, children, layout: { visibilityDrawer }, docked, containerStyle } = this.props;
     return (
       <div style={styles.layoutComponent}>
         {header ?
@@ -22,7 +22,10 @@ class Layout extends Component {
           : null
         }
         <main style={styles.main}>
-          <section style={styles.container}>
+          <section
+            style={containerStyle ?
+              Object.assign({}, styles.container, containerStyle) : styles.container}
+          >
             {children}
           </section>
           {docked ?
