@@ -14,8 +14,13 @@ const TablePicks = (props) => {
   const picksItem = picks.map((pick, index) => (
     <TableRow key={index}>
       <TableRowColumn>{pick.sport}</TableRowColumn>
+      <TableRowColumn>{pick.competition}</TableRowColumn>
       <TableRowColumn>{pick.match}</TableRowColumn>
+      <TableRowColumn>{pick.pick}</TableRowColumn>
+      <TableRowColumn>{pick.stake}</TableRowColumn>
+      <TableRowColumn>{pick.odd}</TableRowColumn>
       <TableRowColumn>{pick.result}</TableRowColumn>
+      <TableRowColumn>{pick.tipster}</TableRowColumn>
     </TableRow>
   ));
   return (
@@ -28,8 +33,13 @@ const TablePicks = (props) => {
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>Sport</TableHeaderColumn>
-            <TableHeaderColumn>Name</TableHeaderColumn>
+            <TableHeaderColumn>Competition</TableHeaderColumn>
+            <TableHeaderColumn>Match</TableHeaderColumn>
+            <TableHeaderColumn>Pick</TableHeaderColumn>
+            <TableHeaderColumn>Stake</TableHeaderColumn>
+            <TableHeaderColumn>Odd</TableHeaderColumn>
             <TableHeaderColumn>Result</TableHeaderColumn>
+            <TableHeaderColumn>Tipster</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody
