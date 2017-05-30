@@ -7,6 +7,7 @@ import Login from './views/login';
 import Title from './views/title';
 import Global from './views/global';
 import MonthPicks from './views/monthPicks';
+import AddPick from './views/addPick';
 
 import { setUser } from './reducers/login';
 import { setInitApp } from './reducers/app';
@@ -46,6 +47,7 @@ class App extends Component {
             <Route exact path="/" component={email ? Global : Title} />
             <Route path="/login" component={email ? () => (<Redirect to={'/'} />) : Login} />
             <Route path="/monthStats" component={!email ? () => (<Redirect to={'/'} />) : MonthPicks} />
+            <Route path="/addPick" component={!email ? () => (<Redirect to={'/'} />) : AddPick} />
           </div>
         </MuiThemeProvider>
       </ConnectedRouter>

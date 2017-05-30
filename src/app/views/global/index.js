@@ -25,7 +25,7 @@ class GlobalView extends Component {
         </div>
         <FloatingActionButton
           style={styles.floatButton}
-          onTouchTap={() => this.props.push('/monthStats')}
+          onTouchTap={() => this.props.push('/addPick')}
         >
           <ContentAdd />
         </FloatingActionButton>
