@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Layout from '../../components/Layout';
+import CreatePick from '../../components/CreatePick';
 
 import styles from './styles';
 
@@ -9,7 +10,7 @@ const AddPick = () => (
     header={<Header />}
     containerStyle={styles.addPicksComponent}
   >
-    <div>{'Hola'}</div>
+    <CreatePick />
   </Layout>
 );
 
