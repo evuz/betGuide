@@ -6,8 +6,11 @@ import {
   CardText,
   FlatButton,
   TextField,
+  SelectField,
+  MenuItem,
 } from 'material-ui';
 import styles from './styles';
+import { listSports, listBookies } from './lists';
 
 class CreatePick extends Component {
   constructor() {
@@ -34,18 +37,67 @@ class CreatePick extends Component {
         <CardHeader
           title="Introduce New Pick"
         />
-        <CardText>
-          <TextField
-            hintText="Sport"
+        <CardText style={styles.cardText}>
+          <SelectField
+            floatingLabelText="Sport"
             name="sport"
+            style={styles.textField}
+          >
+            {
+              listSports.map(sport => (
+                <MenuItem
+                  value={sport}
+                  primaryText={sport}
+                />
+              ))
+            }
+          </SelectField>
+          <SelectField
+            floatingLabelText="Bookie"
+            name="sport"
+            style={styles.textField}
+          >
+            {
+              listBookies.map(bookie => (
+                <MenuItem
+                  value={bookie}
+                  primaryText={bookie}
+                />
+              ))
+            }
+          </SelectField>
+          <TextField
+            hintText="Tipster"
+            name="tipster"
+            style={styles.textField}
           />
           <TextField
-            hintText="Name"
-            name="name"
+            hintText="Competition"
+            name="competition"
+            style={styles.textField}
           />
           <TextField
-            hintText="Sport"
-            name="sport"
+            hintText="Match"
+            name="match"
+            style={styles.fullTextField}
+          />
+          <TextField
+            hintText="Pick"
+            name="pick"
+            fullWidth
+            style={styles.fullTextField}
+          />
+          <TextField
+            hintText="Stake"
+            name="stake"
+            type="number"
+            style={styles.numberField}
+          />
+          <TextField
+            hintText="Odd"
+            name="odd"
+            type="number"
+            style={styles.numberField}
           />
         </CardText>
         <CardActions style={styles.carAction}>

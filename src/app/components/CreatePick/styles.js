@@ -1,10 +1,24 @@
 const styles = {
   card: {
-    width: '300px',
+    maxWidth: '600px',
   },
   carAction: {
     display: 'flex',
     justifyContent: 'flex-end',
+  },
+  cardText: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    width: '250px',
+  },
+  fullTextField: {
+    width: '530px',
+  },
+  numberField: {
+    width: '100px',
   },
 };
 
